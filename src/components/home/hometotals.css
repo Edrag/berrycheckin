@@ -1,0 +1,9 @@
+.datespan {
+    display: inline-block;
+    width: 9em;
+}
+
+.arrowbackground {
+    border-radius: 0.1em;
+
+}
