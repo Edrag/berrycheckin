@@ -65,7 +65,7 @@ class Home extends React.Component {
     getTotalsTable = async () => {
         try {
             let date = this.state.dayDate
-            const response = await fetch(`/sumday/${date.toISOString().slice(0,10)}`, {signal:this.signal});
+            const response = await fetch(`/api_bci/sumday/${date.toISOString().slice(0,10)}`, {signal:this.signal});
             const responseJSON = await response.json();
             //console.log(responseJSON);
             if(response.ok) {
@@ -95,7 +95,7 @@ class Home extends React.Component {
     getLast5 = async () => {
         try {
 
-            const response = await fetch(`/last5`, {signal:this.signal});
+            const response = await fetch(`/api_bci/last5`, {signal:this.signal});
             const responseJSON = await response.json();
             if(response.ok) {
                 this.setState({
@@ -111,7 +111,7 @@ class Home extends React.Component {
 
     deleteItemFromRecords = async (entryId) => {
         try {
-            const response = await fetch(`delrecord/${entryId}`, {
+            const response = await fetch(`/api_bci/delrecord/${entryId}`, {
                 method:'DELETE',
                 cache: 'no-cache'
             });

@@ -33,7 +33,7 @@ class Form extends React.Component {
     getBerryType = async () => {
         try {
             console.log(`Execute Berry Type Change`);
-            const response = await fetch("/berrytypes", {signal:this.signal});
+            const response = await fetch("/api_bci/berrytypes", {signal:this.signal});
             const responseJSON = await response.json();
             if (response.ok) {
                 this.setState({
@@ -52,7 +52,7 @@ class Form extends React.Component {
 
     getBlocks = async () => {
         try {
-            const response = await fetch(`/blocks/${this.state.berryTypeSelectedNum}`,{signal:this.signal});
+            const response = await fetch(`/api_bci/blocks/${this.state.berryTypeSelectedNum}`,{signal:this.signal});
             const responseJSON = await response.json();
             if (response.ok) {
                 console.log(this.state.blockNames);
@@ -74,7 +74,7 @@ class Form extends React.Component {
 
     getVarieties = async () => {
         try {
-            const response = await fetch(`/varieties/${this.state.blockSelectedNum}/${this.state.berryTypeSelectedNum}`, {signal:this.signal});
+            const response = await fetch(`/api_bci/varieties/${this.state.blockSelectedNum}/${this.state.berryTypeSelectedNum}`, {signal:this.signal});
             const responseJSON = await response.json();
             if(response.ok) {
                 this.setState({
@@ -109,7 +109,7 @@ class Form extends React.Component {
 
     retrieveRecordForForm = async (id) => {
         try {
-            const response = await fetch(`record/${id}`,{signal:this.signal});
+            const response = await fetch(`/api_bci/record/${id}`,{signal:this.signal});
             const responseJSON = await response.json();
             await this.setState({
                 startDate: new Date(responseJSON.DateTime),
@@ -234,7 +234,7 @@ class Form extends React.Component {
     render() {
         return (
             <div className="form">
-                <form id="berryform" method="POST" action="/formsubmit">
+                <form id="berryform" method="POST" action="/api_bci/formsubmit">
                     <h3>Date and Time</h3>
                     <input type="hidden" id="entryid" name="entryid" value={this.props.id}></input>
                     <ul id="dateandtime" className="flexcontainer">
