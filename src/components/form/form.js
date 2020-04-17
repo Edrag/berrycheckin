@@ -206,18 +206,29 @@ class Form extends React.Component {
         });
     };
 
+    /*formValidation = () => {
+        document.forms["berryform"].elements.(el => {
+            console.log(el);
+            if(el.tagName==="INPUT" || el.tagName==="SELECT" || el.tagName==="TEXTAREA") {
+                console.log(`inside if`);
+            }
+        });
+    };*/
+
     componentWillUnmount() {
         this.abortController.abort();
         this.props.clearId();
     }
 
-    handleSubmitClick = async () => {
+    handleSubmitClick = async (e) => {
         try {
+            e.preventDefault();
             if (this.props.id) {
-                document.getElementById('berryform').action = '/record';
+                document.getElementById('berryform').action = '/api_bci/post/record';
             }
-            this.props.clearId();
+            //this.formValidation();
             document.getElementById('berryform').submit();
+            this.props.clearId();
         } catch (error) {
             console.log(error);
         }
@@ -234,7 +245,7 @@ class Form extends React.Component {
     render() {
         return (
             <div className="form">
-                <form id="berryform" method="POST" action="/api_bci/formsubmit">
+                <form id="berryform" method="POST" action="/api_bci/post/formsubmit">
                     <h3>Date and Time</h3>
                     <input type="hidden" id="entryid" name="entryid" value={this.props.id}></input>
                     <ul id="dateandtime" className="flexcontainer">
