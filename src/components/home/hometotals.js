@@ -21,13 +21,13 @@ class HomeTotals extends React.Component {
         return(
             <div className="tables">
                 <h2>Totals up to&nbsp;&nbsp;&nbsp;    
-                    <button onMouseDown={e=>this.dateScroll(e)} onMouseUp={e=>this.dateScroll(e)} id='left' className='arrowbackground'>
+                    <button onPointerDown={e=>this.dateScroll(e)} onPointerUp={e=>this.dateScroll(e)} id='left' className='arrowbackground'>
                         &lt;
                     </button>
                     <span className='datespan'>
                         {`${this.props.dayName}, ${this.props.dayDate.toISOString().slice(0,10)}`}
                     </span>
-                    <button onMouseDown={e=>this.dateScroll(e)} onMouseUp={e=>this.dateScroll(e)} id='right' className='arrowbackground'>
+                    <button onPointerDown={e=>this.dateScroll(e)} onPointerUp={e=>this.dateScroll(e)} id='right' className='arrowbackground'>
                         &gt; 
                     </button>
                 </h2>

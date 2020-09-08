@@ -30,11 +30,12 @@ class Home extends React.Component {
         }
     }
 
-    arrowEvent = async (direction, mouseAction) => {
-        this.setState({
+    arrowEvent = async (direction, pointerAction) => {
+        //console.log(`Here, for arrow event, ${direction}, ${pointerAction}`);
+        await this.setState({
             direction:direction
         })
-        if(mouseAction==='mousedown') {
+        if(pointerAction==='pointerdown') {
             this.setDateBox();
             intervalTimer= setInterval(this.setDateBox,200);            
         } else {
@@ -45,6 +46,7 @@ class Home extends React.Component {
 
     setDateBox = async () => {
         let newDate
+        //console.log(this.state.direction);
         if(this.state.direction==='left') {
             newDate = this.state.dayDate;
             newDate.setDate(newDate.getDate()-1);
