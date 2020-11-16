@@ -1,0 +1,14 @@
+#last5TableWrap  {
+    overflow:auto;
+    height: 200px;
+}
+
+#last5Head thead{
+    position: sticky;
+    top:0;
+    width:auto;
+    border: 1px solid;
+}
+table {
+    overflow: auto;
+}
