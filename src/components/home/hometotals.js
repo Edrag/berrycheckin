@@ -37,19 +37,24 @@ class HomeTotals extends React.Component {
                             <th key="row1">Berry Type</th>
                             {this.props.berryTotals.map((item,i )=>
                                 <th key={`berrytypescol${i+1}`}>{item.BerryTypeName}</th>
-                            )}  
-                            <th></th>
+                            )}
                         </tr>
                     </thead>
                     <tbody>
                         <tr key="sumberrydayrow">
-                            <td key="row2">Day Weight</td>
+                            <td key="row2">Class 1 Day Weight</td>
                             {this.props.berryTotals.map((item,i)=>
-                                <td key={`sumberrydaycol${i+1}`}>{item.DayWeight}</td>
+                                <td key={`sumberryday1col${i+1}`}>{item.DayWeightClass1}</td>
+                            )}
+                        </tr>
+                        <tr key="sumberrydayrow">
+                            <td key="row3">Class 2 & 3 Day Weight</td>
+                            {this.props.berryTotals.map((item,i)=>
+                                <td key={`sumberryday2col${i+1}`}>{item.DayWeightClassOther}</td>
                             )}
                         </tr>
                         <tr key="sumberryseasonrow">
-                            <td key="row3">Season Weight</td>
+                            <td key="row4">Season Weight</td>
                             {this.props.berryTotals.map((item,i)=>
                                 <td key={`sumberryseasoncol${i+1}`}>{item.SeasonWeight}</td>
                             )}

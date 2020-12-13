@@ -143,18 +143,18 @@ class Home extends React.Component {
         return(
             <div>
                 <div className="homeflexcontainer">
-                    <HomeLast5 
-                        berryRecords5={this.state.berryRecords5}
-                        deleteId={this.deleteItemFromRecords}
-                        modifyId={this.modifyItemFromRecords}
-                    />
-                </div>
-                <div className="homeflexcontainer">
                     <HomeTotals                    
                         arrowAction={this.arrowEvent} 
                         dayName={this.state.dayName}
                         dayDate={this.state.dayDate} 
                         berryTotals={this.state.berryTotalsTable}                    
+                    />
+                </div>
+                <div className="homeflexcontainer">
+                    <HomeLast5 
+                        berryRecords5={this.state.berryRecords5}
+                        deleteId={this.deleteItemFromRecords}
+                        modifyId={this.modifyItemFromRecords}
                     />
                 </div>
             </div>
