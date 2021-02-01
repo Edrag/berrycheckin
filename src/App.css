@@ -6,3 +6,15 @@ html {
   background-color: darkslategray;
 }
 
+.logoDiv {
+  display: flex;
+  background-color: black;
+  border-bottom: 2px solid dimgray;
+}
+
+.logo {
+  margin-left: 2%;
+  max-width: 20%;
+  max-height: 1.5cm;
+}
+

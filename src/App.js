@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/form/form.js';
 import Menu from './components/menu/menu';
 import Home from './components/home/home';
+import Logo from './BdW_logo_pruple_50.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class App extends React.Component {
       entryId: undefined
     };
     this.togglePage = this.togglePage.bind(this);
+  };
+
+  home = () => {
+    window.location.href='www.bdw.site';
   };
 
   togglePage(clickedPage) {
@@ -68,6 +73,9 @@ class App extends React.Component {
   render() {  
     return (
       <div className="App">
+        <div className="logoDiv">
+          <img src={Logo} className="logo" alt="BdW Logo" onClick={this.home}/>
+        </div>    
         <Menu onClick={this.togglePage} />
         {this.state.showPage[0]? <Home id={this.setEntryIdForModify}/>:null}
         {this.state.showPage[1] ? <Form id={this.state.entryId} clearId={this.clearEntryId} cancelClick={this.formCancelButtonClick}/> : null }
