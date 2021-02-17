@@ -244,13 +244,13 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div className="form">
+            <div className="formDiv">
                 <form id="berryform" method="POST" action="/api_bci/post/formsubmit">
                     <h3>Date and Time</h3>
                     <input type="hidden" id="entryid" name="entryid" value={this.props.id}></input>
                     <ul id="dateandtime" className="flexcontainer">
                         <li>
-                            <label htmlFor="date">Date and Time</label>
+                            <label htmlFor="date">Date and Time </label>
                             <DatePicker
                                 id="datetime"
                                 name="datetime"

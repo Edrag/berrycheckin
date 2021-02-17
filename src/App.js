@@ -75,10 +75,12 @@ class App extends React.Component {
       <div className="App">
         <div className="logoDiv">
           <img src={Logo} className="logo" alt="BdW Logo" onClick={this.home}/>
-        </div>    
-        <Menu onClick={this.togglePage} />
-        {this.state.showPage[0]? <Home id={this.setEntryIdForModify}/>:null}
-        {this.state.showPage[1] ? <Form id={this.state.entryId} clearId={this.clearEntryId} cancelClick={this.formCancelButtonClick}/> : null }
+        </div>
+          <Menu onClick={this.togglePage} />      
+        <div className="bodyDiv">
+          {this.state.showPage[0]? <Home id={this.setEntryIdForModify}/>:null}
+          {this.state.showPage[1] ? <Form id={this.state.entryId} clearId={this.clearEntryId} cancelClick={this.formCancelButtonClick}/> : null }
+        </div>        
       </div>
     );
   }

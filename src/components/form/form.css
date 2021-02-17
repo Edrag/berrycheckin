@@ -14,17 +14,21 @@
   border-color: grey;
 }
 
-.form {
+.formDiv {
   z-index: auto;
   position: absolute;
   left: 50%;
-  margin-left: -35%;
-  width: 70%;
+  transform: translateX(-50%);
+  top: 0;
   height: auto;
-  top: 10%;
   border: black 1px solid;
   background-color: lightgray;
   border-radius: 1.5em;
+}
+
+#berryform {
+  justify-items: center;
+  display:grid;
 }
 
 .flexcontainer {
@@ -40,7 +44,7 @@
 }
 
 input, select, button, textarea {
-  border-radius: 0.4em;
+  border-radius: 0.2rem;
 }
 
 .qualitycontrols input,
@@ -72,9 +76,16 @@ input, select, button, textarea {
   border: 1.5px solid grey;
 }
 
+ul {
+  margin: auto;
+  padding: inherit;
+}
+
 h3 {
-  padding: 8px;
+  padding: 0.2rem;
   font-weight: bold;
+  margin: auto;
+  margin-top: 0.5rem;
 }
 
 .formbuttons {
@@ -82,12 +93,12 @@ h3 {
   margin: 0.5em 0em 1em 0em;
 }
 
-.formbuttons * {
+.formbuttons input,button {
   margin: 0em 0.5em 0em 0.5em;
 }
 
 .qccomments {
-  margin: 1em 0em 1em 0em;
+  margin: 0.5rem 0em 0.5rem 0em;
   display: flex;
 }
 

@@ -14,7 +14,7 @@ class Menu extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="menuDiv">
                 <button className="topmenubutton" onClick={this.handleClick} value="0">Home</button>
                 <button className="topmenubutton" onClick={this.handleClick} value="1">Receive Berries</button>
                 <button className="topmenubutton" onClick={this.handleClick} value="2">Modify Data</button>
