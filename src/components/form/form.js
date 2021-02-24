@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import "./react-datepicker.css";
 import './form.css';
 
+let intervalTimer
 class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -20,11 +21,14 @@ class Form extends React.Component {
             blockNames:[],
             varietyNames:[],
             startDate: new Date(),
-            berryRecord:[]
+            berryRecord:[],
+            scaleReadTime:0,
+            intervalId:false
         };
         this.handleParamChange = this.handleParamChange.bind(this);
         this.updateNWeight = this.updateNWeight.bind(this);
         this.handleBerryTypeChange = this.handleBerryTypeChange.bind(this);
+        this.handleInterval = this.handleInterval.bind(this);
     };
 
     abortController = new AbortController();
@@ -94,11 +98,47 @@ class Form extends React.Component {
 
     };
 
+    getWeight = async () => {        
+        try {
+            const response = await fetch(`http://192.168.1.250:1880/gewig`, {signal:this.signal});
+            const responseJSON = await response.json();
+            console.log(responseJSON);
+            console.log(parseFloat(responseJSON.Mass.slice(1,-4)));
+            console.log(Date.parse(responseJSON.Time));
+            const scaleTimeReading = Date.parse(responseJSON.Time);
+            if(response.ok) {
+                if(this.state.scaleReadTime<scaleTimeReading) {
+                    this.setState({
+                        grossWeight:parseFloat(responseJSON.Mass.slice(1,-4)).toFixed(1),
+                        scaleReadTime:scaleTimeReading
+                    });
+                }
+            } else {
+                throw new Error(response.statusText);
+            }
+        } catch(error){
+            console.log(error);
+        }
+    };
+
+    handleInterval = () =>  {
+        if(!this.state.intervalId) {
+          intervalTimer = setInterval(this.getWeight,5000)
+          this.setState({
+            intervalId: true
+          }) 
+        } else  {
+          clearInterval(intervalTimer)
+        };
+      }
+
     async componentDidMount() {
         try {
             await this.getBerryType();
             await this.getBlocks();
             await this.getVarieties();
+            await this.getWeight();
+            await this.handleInterval();
             if(this.props.id) {
                 this.retrieveRecordForForm(this.props.id);
             }
@@ -218,6 +258,7 @@ class Form extends React.Component {
     componentWillUnmount() {
         this.abortController.abort();
         this.props.clearId();
+        this.handleInterval();
     }
 
     handleSubmitClick = async (e) => {
